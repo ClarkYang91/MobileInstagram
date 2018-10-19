@@ -13,13 +13,12 @@
             android:id="@+id/tvPosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="250"
+            android:layout_marginLeft="8dp"
+            android:text="999"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="2dp" />
 
         <TextView
             android:id="@+id/textPosts"
@@ -36,16 +35,15 @@
             android:id="@+id/tvFollowers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="300"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="2dp"
+            android:text="999"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="2dp"
-            app:layout_constraintRight_toLeftOf="@+id/tvFollowing"
-            android:layout_marginRight="8dp"
             app:layout_constraintLeft_toRightOf="@+id/tvPosts"
-            android:layout_marginLeft="8dp"
-            />
+            app:layout_constraintRight_toLeftOf="@+id/tvFollowing"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textFollowers"
@@ -65,13 +63,12 @@
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="400"
+            android:layout_marginTop="2dp"
+            android:text="999"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginTop="2dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"/>
+            tools:layout_editor_absoluteX="346dp" />
 
         <TextView
             android:id="@+id/textFollolwing"

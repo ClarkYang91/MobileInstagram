@@ -36,7 +36,6 @@ import java.util.Map;
 
 import tabian.com.instagramclone2.R;
 import tabian.com.instagramclone2.Utils.MainFeedListAdapter;
-import tabian.com.instagramclone2.Utils.StoriesRecyclerViewAdapter;
 import tabian.com.instagramclone2.models.Comment;
 import tabian.com.instagramclone2.models.Photo;
 import tabian.com.instagramclone2.models.Story;
@@ -81,7 +80,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     private JSONArray mMasterStoriesArray;
 
     private RecyclerView mRecyclerView;
-    public StoriesRecyclerViewAdapter mStoriesAdapter;
+
 
 
     @Nullable
@@ -268,8 +267,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             mListView.addHeaderView(mRecyclerView);
         }
 
-        mStoriesAdapter = new StoriesRecyclerViewAdapter(mMasterStoriesArray, getActivity());
-        mRecyclerView.setAdapter(mStoriesAdapter);
+
     }
 
     private void clearAll(){
@@ -290,9 +288,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
             mPaginatedPhotos.clear();
         }
         mMasterStoriesArray = new JSONArray(new ArrayList<String>());
-        if(mStoriesAdapter != null){
-            mStoriesAdapter.notifyDataSetChanged();
-        }
+        
         if(mRecyclerView != null){
             mRecyclerView.setAdapter(null);
         }

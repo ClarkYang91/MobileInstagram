@@ -31,15 +31,15 @@
                     android:layout_centerVertical="true"/>
 
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/username"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/backArrow"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:layout_marginStart="10dp"
-                    android:text="mitch.tabian"/>
+                    android:layout_toRightOf="@+id/backArrow"
+                    android:text="test"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
 
 

@@ -51,9 +51,6 @@
         <activity android:name=".opengl.OpenGLES10Activity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".opengl.NewStoryActivity"
-                  android:launchMode="singleInstance"
-                  android:screenOrientation="portrait"/>
         <activity
             android:name=".Search.SearchActivity"
             android:windowSoftInputMode="adjustNothing"

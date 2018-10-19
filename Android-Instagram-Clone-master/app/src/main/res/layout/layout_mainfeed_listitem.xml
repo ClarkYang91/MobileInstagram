@@ -28,16 +28,15 @@
 
 
                 <TextView
+                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="mitch.tabian"
-                    android:layout_toRightOf="@+id/profile_photo"
-                    android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
-                    android:id="@+id/username"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/profile_photo"
+                    android:text="test"
                     android:textColor="@color/black"
-                    />
+                    android:textSize="20sp" />
 
 
                 <ImageView
