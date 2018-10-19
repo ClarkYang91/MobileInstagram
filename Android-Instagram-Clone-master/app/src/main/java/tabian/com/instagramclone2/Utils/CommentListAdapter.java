@@ -39,9 +39,7 @@ import tabian.com.instagramclone2.models.Comment;
 import tabian.com.instagramclone2.models.User;
 import tabian.com.instagramclone2.models.UserAccountSettings;
 
-/**
- * Created by User on 8/22/2017.
- */
+
 
 public class CommentListAdapter extends ArrayAdapter<Comment> {
 

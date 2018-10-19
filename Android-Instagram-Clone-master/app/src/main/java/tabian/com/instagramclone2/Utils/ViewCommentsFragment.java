@@ -52,9 +52,7 @@ import tabian.com.instagramclone2.models.Photo;
 import tabian.com.instagramclone2.models.User;
 import tabian.com.instagramclone2.models.UserAccountSettings;
 
-/**
- * Created by User on 8/12/2017.
- */
+
 
 public class ViewCommentsFragment extends Fragment {
 

@@ -13,9 +13,6 @@ import android.widget.Toast;
 
 import tabian.com.instagramclone2.R;
 
-/**
- * Created by User on 7/10/2017.
- */
 
 public class ConfirmPasswordDialog extends DialogFragment {
 

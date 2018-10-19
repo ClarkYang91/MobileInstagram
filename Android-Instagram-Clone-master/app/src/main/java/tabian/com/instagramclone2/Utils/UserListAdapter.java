@@ -27,9 +27,7 @@ import tabian.com.instagramclone2.R;
 import tabian.com.instagramclone2.models.User;
 import tabian.com.instagramclone2.models.UserAccountSettings;
 
-/**
- * Created by User on 9/17/2017.
- */
+
 
 public class UserListAdapter extends ArrayAdapter<User>{
 

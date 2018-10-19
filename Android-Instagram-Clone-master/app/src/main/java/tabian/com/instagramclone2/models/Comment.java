@@ -2,9 +2,6 @@ package tabian.com.instagramclone2.models;
 
 import java.util.List;
 
-/**
- * Created by User on 8/22/2017.
- */
 
 public class Comment {
 

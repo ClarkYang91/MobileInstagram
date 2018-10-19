@@ -12,9 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 
-/**
- * Created by User on 11/27/2017.
- */
 
 class MyGLSurfaceView extends GLSurfaceView  {
 

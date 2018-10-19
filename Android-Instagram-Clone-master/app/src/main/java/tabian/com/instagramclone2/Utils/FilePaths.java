@@ -3,9 +3,6 @@ package tabian.com.instagramclone2.Utils;
 import android.content.Context;
 import android.os.Environment;
 
-/**
- * Created by User on 7/24/2017.
- */
 
 public class FilePaths {
 

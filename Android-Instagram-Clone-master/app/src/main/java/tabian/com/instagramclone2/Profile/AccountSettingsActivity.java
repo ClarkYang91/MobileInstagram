@@ -35,9 +35,7 @@ import tabian.com.instagramclone2.Utils.BottomNavigationViewHelper;
 import tabian.com.instagramclone2.Utils.FirebaseMethods;
 import tabian.com.instagramclone2.Utils.SectionsStatePagerAdapter;
 
-/**
- * Created by User on 6/4/2017.
- */
+
 
 public class AccountSettingsActivity extends AppCompatActivity {
 

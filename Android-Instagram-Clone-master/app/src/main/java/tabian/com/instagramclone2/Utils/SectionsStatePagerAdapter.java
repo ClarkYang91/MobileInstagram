@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by User on 6/4/2017.
- */
+
 
 public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
 

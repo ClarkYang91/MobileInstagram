@@ -17,9 +17,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import tabian.com.instagramclone2.R;
 
-/**
- * Created by User on 6/4/2017.
- */
+
 
 public class UniversalImageLoader {
 

@@ -16,9 +16,6 @@ import tabian.com.instagramclone2.Profile.AccountSettingsActivity;
 import tabian.com.instagramclone2.R;
 import tabian.com.instagramclone2.Utils.Permissions;
 
-/**
- * Created by User on 5/28/2017.
- */
 
 public class PhotoFragment extends Fragment {
     private static final String TAG = "PhotoFragment";

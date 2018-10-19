@@ -63,9 +63,6 @@ import tabian.com.instagramclone2.R;
 import static java.lang.Math.round;
 
 
-/**
- * Created by User on 11/27/2017.
- */
 
 public class MyGLRenderer implements GLSurfaceView.Renderer{
     private static final String TAG = "fsnklsnflkds";

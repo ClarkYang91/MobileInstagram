@@ -24,9 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import tabian.com.instagramclone2.Home.HomeActivity;
 import tabian.com.instagramclone2.R;
 
-/**
- * Created by User on 6/19/2017.
- */
 
 public class LoginActivity extends AppCompatActivity {
 

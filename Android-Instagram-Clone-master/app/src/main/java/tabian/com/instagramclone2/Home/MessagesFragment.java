@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import tabian.com.instagramclone2.R;
 
-/**
- * Created by User on 5/28/2017.
- */
 
 public class MessagesFragment extends Fragment {
     private static final String TAG = "MessagesFragment";

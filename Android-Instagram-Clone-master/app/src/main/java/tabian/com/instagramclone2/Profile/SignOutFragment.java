@@ -21,9 +21,6 @@ import java.net.Inet4Address;
 import tabian.com.instagramclone2.Login.LoginActivity;
 import tabian.com.instagramclone2.R;
 
-/**
- * Created by User on 6/4/2017.
- */
 
 public class SignOutFragment extends Fragment {
 

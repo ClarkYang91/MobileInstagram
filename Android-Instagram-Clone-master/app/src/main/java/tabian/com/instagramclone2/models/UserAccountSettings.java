@@ -3,9 +3,7 @@ package tabian.com.instagramclone2.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by User on 6/29/2017.
- */
+
 
 public class UserAccountSettings implements Parcelable{
 

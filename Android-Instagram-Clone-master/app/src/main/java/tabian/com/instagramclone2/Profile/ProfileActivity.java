@@ -20,9 +20,7 @@ import tabian.com.instagramclone2.Utils.ViewProfileFragment;
 import tabian.com.instagramclone2.models.Photo;
 import tabian.com.instagramclone2.models.User;
 
-/**
- * Created by User on 5/28/2017.
- */
+
 
 public class ProfileActivity extends AppCompatActivity implements
         ProfileFragment.OnGridImageSelectedListener ,

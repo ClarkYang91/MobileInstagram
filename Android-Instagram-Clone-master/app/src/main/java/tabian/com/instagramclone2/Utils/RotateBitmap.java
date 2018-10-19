@@ -11,9 +11,7 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by User on 10/29/2017.
- */
+
 
 public class RotateBitmap {
 

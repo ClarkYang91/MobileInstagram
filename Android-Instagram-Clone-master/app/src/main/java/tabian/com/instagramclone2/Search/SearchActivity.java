@@ -34,9 +34,7 @@ import tabian.com.instagramclone2.Utils.BottomNavigationViewHelper;
 import tabian.com.instagramclone2.Utils.UserListAdapter;
 import tabian.com.instagramclone2.models.User;
 
-/**
- * Created by User on 5/28/2017.
- */
+
 
 public class SearchActivity extends AppCompatActivity{
     private static final String TAG = "SearchActivity";

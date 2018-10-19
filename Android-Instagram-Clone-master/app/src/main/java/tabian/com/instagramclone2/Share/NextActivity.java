@@ -27,9 +27,7 @@ import tabian.com.instagramclone2.Utils.FirebaseMethods;
 import tabian.com.instagramclone2.Utils.UniversalImageLoader;
 import tabian.com.instagramclone2.models.User;
 
-/**
- * Created by User on 7/24/2017.
- */
+
 
 public class NextActivity extends AppCompatActivity {
 

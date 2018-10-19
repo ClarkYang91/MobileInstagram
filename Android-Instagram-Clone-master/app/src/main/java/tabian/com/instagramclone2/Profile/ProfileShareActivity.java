@@ -21,9 +21,6 @@ import tabian.com.instagramclone2.Utils.BottomNavigationViewHelper;
 import tabian.com.instagramclone2.Utils.Permissions;
 import tabian.com.instagramclone2.Utils.SectionsPagerAdapter;
 
-/**
- * Created by User on 5/28/2017.
- */
 
 public class ProfileShareActivity extends AppCompatActivity{
     private static final String TAG = "ShareActivity";

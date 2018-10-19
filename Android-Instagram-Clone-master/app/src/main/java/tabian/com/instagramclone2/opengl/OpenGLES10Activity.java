@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import tabian.com.instagramclone2.R;
 
 
-/**
- * Created by User on 11/27/2017.
- */
 
 public class OpenGLES10Activity extends AppCompatActivity{
 

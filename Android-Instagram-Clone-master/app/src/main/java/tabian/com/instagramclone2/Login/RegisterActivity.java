@@ -30,9 +30,7 @@ import tabian.com.instagramclone2.R;
 import tabian.com.instagramclone2.Utils.FirebaseMethods;
 import tabian.com.instagramclone2.models.User;
 
-/**
- * Created by User on 6/19/2017.
- */
+
 
 public class RegisterActivity extends AppCompatActivity {
 
