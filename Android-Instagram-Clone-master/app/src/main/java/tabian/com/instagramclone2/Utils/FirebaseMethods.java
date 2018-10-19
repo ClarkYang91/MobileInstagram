@@ -146,6 +146,11 @@ public class FirebaseMethods {
             Log.d(TAG, "uploadNewPhoto: uploading new PROFILE photo");
 
 
+            ((AccountSettingsActivity)mContext).setViewPager(
+                    ((AccountSettingsActivity)mContext).pagerAdapter
+                            .getFragmentNumber(mContext.getString(R.string.edit_profile_fragment))
+            );
+
             String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
             StorageReference storageReference = mStorageReference
                     .child(filePaths.FIREBASE_IMAGE_STORAGE + "/" + user_id + "/profile_photo");
@@ -169,10 +174,7 @@ public class FirebaseMethods {
                     //insert into 'user_account_settings' node
                     setProfilePhoto(firebaseUrl.toString());
 
-                    ((AccountSettingsActivity)mContext).setViewPager(
-                            ((AccountSettingsActivity)mContext).pagerAdapter
-                                    .getFragmentNumber(mContext.getString(R.string.edit_profile_fragment))
-                    );
+
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
