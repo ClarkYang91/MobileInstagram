@@ -16,7 +16,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import tabian.com.instagramclone2.R;
-import tabian.com.instagramclone2.models.UserStories;
 
 
 /**
@@ -39,7 +38,7 @@ public class OpenGLES10Activity extends AppCompatActivity{
     private float mScreenHeight;
 
     private int resourceIndex = 0;
-    private ArrayList<UserStories> mUserStories = new ArrayList<>();
+
 
 
     @Override
