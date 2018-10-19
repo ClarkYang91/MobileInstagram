@@ -536,30 +536,61 @@ public class FirebaseMethods {
      * @param username
      */
     public void registerNewEmail(final String email, String password, final String username){
+//        mAuth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+//
+//                        // If sign in fails, display a message to the user. If sign in succeeds
+//                        // the auth state listener will be notified and logic to handle the
+//                        // signed in user can be handled in the listener.
+//                        if (!task.isSuccessful()) {
+//                            Toast.makeText(mContext, R.string.auth_failed,
+//                                    Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                        else if(task.isSuccessful()){
+//                            //send verificaton email
+//                            sendVerificationEmail();
+//
+//                            userID = mAuth.getCurrentUser().getUid();
+//                            Log.d(TAG, "onComplete: Authstate changed: " + userID);
+//                        }
+//
+//                    }
+//                });
+
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(mContext, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-
-                        }
-                        else if(task.isSuccessful()){
-                            //send verificaton email
-                            sendVerificationEmail();
-
+                        if (task.isSuccessful()) {
                             userID = mAuth.getCurrentUser().getUid();
-                            Log.d(TAG, "onComplete: Authstate changed: " + userID);
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            Toast.makeText(mContext, "Register Success.",
+//                                    Toast.LENGTH_SHORT).show();
+
+                            Log.d("USERID", userID);
+//                            Intent intent = new Intent(mContext, LoginActivity.class);
+//                            startActivity(intent);
+//                                        updateUI(user);
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(mContext, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+//                                        updateUI(null);
                         }
 
+                        // ...
                     }
                 });
+
+
     }
 
     public void sendVerificationEmail(){
@@ -592,6 +623,8 @@ public class FirebaseMethods {
     public void addNewUser(String email, String username, String description, String website, String profile_photo){
 
         User user = new User( userID,  1,  email,  StringManipulation.condenseUsername(username) );
+
+//        Log.d("USERID",userID);
 
         myRef.child(mContext.getString(R.string.dbname_users))
                 .child(userID)

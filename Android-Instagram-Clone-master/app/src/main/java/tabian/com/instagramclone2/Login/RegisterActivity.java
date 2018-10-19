@@ -1,6 +1,7 @@
 package tabian.com.instagramclone2.Login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,9 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
     private Context mContext;
     private String email, username, password;
     private EditText mEmail, mPassword, mUsername;
-    private TextView loadingPleaseWait;
+//    private TextView loadingPleaseWait;
     private Button btnRegister;
-    private ProgressBar mProgressBar;
+//    private ProgressBar mProgressBar;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -72,24 +76,35 @@ public class RegisterActivity extends AppCompatActivity {
                 username = mUsername.getText().toString();
                 password = mPassword.getText().toString();
 
-                if(checkInputs(email, username, password)){
-                    mProgressBar.setVisibility(View.VISIBLE);
-                    loadingPleaseWait.setVisibility(View.VISIBLE);
+//                if(checkInputs(email, username, password)){
+////                    mProgressBar.setVisibility(View.VISIBLE);
+////                    loadingPleaseWait.setVisibility(View.VISIBLE);
+//
+//                    firebaseMethods.registerNewEmail(email, password, username);
+//                }
+
+                if (email.equals("") || password.equals("") || username.equals(""))
+                {
+                    Toast.makeText(RegisterActivity.this, "Please fill in necessary information", Toast.LENGTH_SHORT).show();
+                }
+                else {
 
                     firebaseMethods.registerNewEmail(email, password, username);
+
+
                 }
             }
         });
     }
 
-    private boolean checkInputs(String email, String username, String password){
-        Log.d(TAG, "checkInputs: checking inputs for null values.");
-        if(email.equals("") || username.equals("") || password.equals("")){
-            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
+//    private boolean checkInputs(String email, String username, String password){
+//        Log.d(TAG, "checkInputs: checking inputs for null values.");
+//        if(email.equals("") || username.equals("") || password.equals("")){
+//            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        return true;
+//    }
     /**
      * Initialize the activity widgets
      */
@@ -98,25 +113,25 @@ public class RegisterActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.input_email);
         mUsername = (EditText) findViewById(R.id.input_username);
         btnRegister = (Button) findViewById(R.id.btn_register);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        loadingPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
+//        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+//        loadingPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
         mPassword = (EditText) findViewById(R.id.input_password);
         mContext = RegisterActivity.this;
-        mProgressBar.setVisibility(View.GONE);
-        loadingPleaseWait.setVisibility(View.GONE);
+//        mProgressBar.setVisibility(View.GONE);
+//        loadingPleaseWait.setVisibility(View.GONE);
 
     }
 
-    private boolean isStringNull(String string){
-        Log.d(TAG, "isStringNull: checking string if null.");
-
-        if(string.equals("")){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+//    private boolean isStringNull(String string){
+//        Log.d(TAG, "isStringNull: checking string if null.");
+//
+//        if(string.equals("")){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }
 
      /*
     ------------------------------------ Firebase ---------------------------------------------
@@ -129,39 +144,35 @@ public class RegisterActivity extends AppCompatActivity {
     private void checkIfUsernameExists(final String username) {
         Log.d(TAG, "checkIfUsernameExists: Checking if  " + username + " already exists.");
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Query query = reference
-                .child(getString(R.string.dbname_users))
-                .orderByChild(getString(R.string.field_username))
-                .equalTo(username);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+//        Query query = reference
+//                .child(getString(R.string.dbname_users))
+//                .orderByChild(getString(R.string.field_username))
+//                .equalTo(username);
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                for(DataSnapshot singleSnapshot: dataSnapshot.getChildren()){
+//                    if (singleSnapshot.exists()){
+//                        Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
+//                        append = myRef.push().getKey().substring(3,10);
+//                        Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+//                    }
+//                }
+//
+//                String mUsername = "";
+//                mUsername = username + append;
+//
+//                //add new user to the database
 
-                for(DataSnapshot singleSnapshot: dataSnapshot.getChildren()){
-                    if (singleSnapshot.exists()){
-                        Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + singleSnapshot.getValue(User.class).getUsername());
-                        append = myRef.push().getKey().substring(3,10);
-                        Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
-                    }
-                }
-
-                String mUsername = "";
-                mUsername = username + append;
-
-                //add new user to the database
-                firebaseMethods.addNewUser(email, mUsername, "", "", "");
-
-                Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
-
-                mAuth.signOut();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     /**
@@ -186,7 +197,9 @@ public class RegisterActivity extends AppCompatActivity {
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                           checkIfUsernameExists(username);
+                            firebaseMethods.addNewUser(email, username, "", "", "");
+                            Toast.makeText(mContext, "Signup successful. Sending verification email.", Toast.LENGTH_SHORT).show();
+                            mAuth.signOut();
                         }
 
                         @Override
