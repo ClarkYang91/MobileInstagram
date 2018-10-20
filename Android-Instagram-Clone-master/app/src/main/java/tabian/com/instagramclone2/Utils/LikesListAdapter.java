@@ -34,6 +34,7 @@ import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import tabian.com.instagramclone2.Home.HomeActivity;
+import tabian.com.instagramclone2.Likes.LikesActivity;
 import tabian.com.instagramclone2.Profile.ProfileActivity;
 import tabian.com.instagramclone2.R;
 import tabian.com.instagramclone2.models.Comment;
@@ -43,7 +44,7 @@ import tabian.com.instagramclone2.models.User;
 import tabian.com.instagramclone2.models.UserAccountSettings;
 
 
-public class FollowerListAdapter extends ArrayAdapter<Photo> {
+public class LikesListAdapter extends ArrayAdapter<Photo> {
 
     public interface OnLoadMoreItemsListener{
         void onLoadMoreItems();
@@ -58,7 +59,7 @@ public class FollowerListAdapter extends ArrayAdapter<Photo> {
     private DatabaseReference mReference;
     private String currentUsername = "";
 
-    public FollowerListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Photo> objects) {
+    public LikesListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Photo> objects) {
         super(context, resource, objects);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mLayoutResource = resource;
@@ -210,11 +211,11 @@ public class FollowerListAdapter extends ArrayAdapter<Photo> {
                     holder.comment.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ((HomeActivity)mContext).onCommentThreadSelected(getItem(position),
+                            ((LikesActivity)mContext).onCommentThreadSelected(getItem(position),
                                     mContext.getString(R.string.home_activity));
 
                             //another thing?
-                            ((HomeActivity)mContext).hideLayout();
+                            ((LikesActivity)mContext).hideLayout();
                         }
                     });
                 }
@@ -326,7 +327,19 @@ public class FollowerListAdapter extends ArrayAdapter<Photo> {
                                     .child(keyID)
                                     .removeValue();
 
-                            mHolder.heart.toggleLike();
+//                            mHolder.heart.toggleLike();
+                            if(mHolder.heart.heartRed.getVisibility() == View.VISIBLE){
+
+                                mHolder.heart.heartRed.setVisibility(View.GONE);
+                                mHolder.heart.heartWhite.setVisibility(View.VISIBLE);
+                            }
+
+                            else if(mHolder.heart.heartRed.getVisibility() == View.GONE){
+
+                                mHolder.heart.heartRed.setVisibility(View.VISIBLE);
+                                mHolder.heart.heartWhite.setVisibility(View.GONE);
+
+                            }
                             getLikesString(mHolder);
                         }
                         //case2: The user has not liked the photo
@@ -372,7 +385,20 @@ public class FollowerListAdapter extends ArrayAdapter<Photo> {
                 .child(newLikeID)
                 .setValue(like);
 
-        holder.heart.toggleLike();
+//        holder.heart.toggleLike();
+        if(holder.heart.heartRed.getVisibility() == View.VISIBLE){
+
+            holder.heart.heartRed.setVisibility(View.GONE);
+            holder.heart.heartWhite.setVisibility(View.VISIBLE);
+        }
+
+        else if(holder.heart.heartRed.getVisibility() == View.GONE){
+
+            holder.heart.heartRed.setVisibility(View.VISIBLE);
+            holder.heart.heartWhite.setVisibility(View.GONE);
+
+        }
+
         getLikesString(holder);
     }
 

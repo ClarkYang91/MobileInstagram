@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 
 import tabian.com.instagramclone2.R;
+import tabian.com.instagramclone2.Utils.LikesListAdapter;
 import tabian.com.instagramclone2.Utils.MainFeedListAdapter;
 import tabian.com.instagramclone2.models.Comment;
 import tabian.com.instagramclone2.models.Photo;
@@ -67,10 +68,9 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     private ArrayList<Photo> mPhotos;
     private ArrayList<Photo> mPaginatedPhotos;
     private ArrayList<String> mFollowing;
-    private int recursionIterator = 0;
-    //    private ListView mListView;
+
     private ElasticListView mListView;
-    private MainFeedListAdapter adapter;
+    private LikesListAdapter adapter;
     private int resultsCount = 0;
     private ArrayList<UserAccountSettings> mUserAccountSettings;
     //    private ArrayList<UserStories> mAllUserStories = new ArrayList<>();
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        mListView = (ListView) view.findViewById(R.id.listView);
+//
         mListView = (ElasticListView) view.findViewById(R.id.listView);
 
         initListViewRefresh();
@@ -141,95 +141,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                         }
 
                     }
-                    if (count == mFollowing.size() - 1) {
-                        getFriendsStories();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
-
-    private void getFriendsStories(){
-        Log.d(TAG, "getFriendsStories: getting stories of following.");
-
-        for(int i = 0; i < mUserAccountSettings.size(); i++){
-            Log.d(TAG, "getFriendsStories: checking user for stories: " + mUserAccountSettings.get(i));
-            final int count = i;
-            Query query = FirebaseDatabase.getInstance().getReference()
-                    .child(getString(R.string.dbname_stories))
-                    .child(mUserAccountSettings.get(i).getUser_id());
-
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    JSONArray storiesArray = new JSONArray();
-                    JSONObject userObject = new JSONObject();
-
-                    Log.d(TAG, "getFriendsStories: count: " + count);
-                    Log.d(TAG, "getFriendsStories: user: " + mUserAccountSettings.get(count).getDisplay_name());
-                    try{
-                        if(count != 0){
-                            userObject.put(getString(R.string.field_display_name), mUserAccountSettings.get(count).getDisplay_name());
-                            userObject.put(getString(R.string.field_username), mUserAccountSettings.get(count).getUsername());
-                            userObject.put(getString(R.string.field_profile_photo), mUserAccountSettings.get(count).getProfile_photo());
-                            userObject.put(getString(R.string.field_user_id), mUserAccountSettings.get(count).getUser_id());
-                        }
-
-                        for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                            JSONObject story = new JSONObject();
-                            story.put(getString(R.string.field_user_id), snapshot.getValue(Story.class).getUser_id());
-                            story.put(getString(R.string.field_timestamp), snapshot.getValue(Story.class).getTimestamp());
-                            story.put(getString(R.string.field_image_uri), snapshot.getValue(Story.class).getImage_url());
-                            story.put(getString(R.string.field_video_uri), snapshot.getValue(Story.class).getVideo_url());
-                            story.put(getString(R.string.field_story_id), snapshot.getValue(Story.class).getStory_id());
-                            story.put(getString(R.string.field_views), snapshot.getValue(Story.class).getViews());
-                            story.put(getString(R.string.field_duration), snapshot.getValue(Story.class).getDuration());
-
-
-                            Log.d(TAG, "getFriendsStories: got a story: " + story.get(getString(R.string.field_user_id)));
-//                            Log.d(TAG, "getFriendsStories: story: " + story.toString());
-                            storiesArray.put(story);
-                        }
-
-                        JSONObject userSettingsStoryObject = new JSONObject();
-                        if(count != 0){
-                            userSettingsStoryObject.put(getString(R.string.user_account_settings), userObject);
-                            if(storiesArray.length() > 0){
-                                userSettingsStoryObject.put(getString(R.string.user_stories), storiesArray);
-                                int position = mMasterStoriesArray.length();
-                                mMasterStoriesArray.put(position, userSettingsStoryObject);
-                                Log.d(TAG, "onDataChange: adding list of stories to position #" + position);
-                            }
-                        }
-                        else {
-                            userObject = mMasterStoriesArray.getJSONObject(0).getJSONObject(getString(R.string.user_account_settings));
-                            userSettingsStoryObject.put(getString(R.string.user_account_settings), userObject);
-                            userSettingsStoryObject.put(getString(R.string.user_stories), storiesArray);
-//                            int position = mMasterStoriesArray.length() - 1;
-                            int position = 0;
-                            mMasterStoriesArray.put(position, userSettingsStoryObject);
-                            Log.d(TAG, "onDataChange: adding list of stories to position #" + position);
-                        }
-
-
-                    }catch (JSONException e){
-                        e.printStackTrace();
-                    }
-
-                    if(!dataSnapshot.exists()){
-                        Log.d(TAG, "getFriendsStories: no stories could be found.");
-//                        Log.d(TAG, "getFriendsStories: " + mMasterStoriesArray.toString());
-
-                    }
-                    if(count == mFollowing.size() - 1){
-                        initRecyclerView();
-                    }
 
                 }
 
@@ -239,35 +150,14 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                 }
             });
         }
-
     }
 
 
 
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: init recyclerview.");
-        if(mRecyclerView == null){
-            TextView textView = new TextView(getActivity());
-            textView.setText("Stories");
-            textView.setTextColor(getResources().getColor(R.color.black));
-            textView.setTextSize(14);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-            );
-            textView.setLayoutParams(params);
-            mListView.addHeaderView(textView);
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-            mRecyclerView = new RecyclerView(getActivity());
-            mRecyclerView.setLayoutManager(layoutManager);
-            mListView.addHeaderView(mRecyclerView);
-        }
 
 
-    }
 
-    private void clearAll(){
+       private void clearAll(){
         if(mFollowing != null){
             mFollowing.clear();
         }
@@ -299,11 +189,10 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
      //     * Retrieve all user id's that current user is following
      //     */
     private void getFollowing() {
-        Log.d(TAG, "getFollowing: searching for following");
+
 
         clearAll();
-        //also add your own id to the list
-        mFollowing.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
 
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child(getActivity().getString(R.string.dbname_following))
@@ -391,7 +280,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     }
 
     private void displayPhotos(){
-//        mPaginatedPhotos = new ArrayList<>();
+
         if(mPhotos != null){
 
             try{
@@ -416,7 +305,7 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                     Log.d(TAG, "displayPhotos: adding a photo to paginated list: " + mPhotos.get(i).getPhoto_id());
                 }
 
-                adapter = new MainFeedListAdapter(getActivity(), R.layout.layout_mainfeed_listitem, mPaginatedPhotos);
+                adapter = new LikesListAdapter(getActivity(), R.layout.layout_mainfeed_listitem, mPaginatedPhotos);
                 mListView.setAdapter(adapter);
 
                 // Notify update is done

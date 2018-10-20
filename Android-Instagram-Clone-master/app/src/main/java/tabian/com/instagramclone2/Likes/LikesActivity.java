@@ -47,7 +47,6 @@ public class LikesActivity extends AppCompatActivity implements
     private static final int ACTIVITY_NUM = 0;
     private static final int HOME_FRAGMENT = 1;
     private static final int RESULT_ADD_NEW_STORY = 7891;
-    private final static int CAMERA_RQ = 6969;
     private static final int REQUEST_ADD_NEW_STORY = 8719;
 
     private Context mContext = LikesActivity.this;
