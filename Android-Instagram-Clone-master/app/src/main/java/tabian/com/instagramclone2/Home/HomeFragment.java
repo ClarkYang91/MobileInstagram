@@ -141,9 +141,9 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                         }
 
                     }
-                    if (count == mFollowing.size() - 1) {
-                        getFriendsStories();
-                    }
+//                    if (count == mFollowing.size() - 1) {
+//                        getFriendsStories();
+//                    }
                 }
 
                 @Override

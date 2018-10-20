@@ -44,7 +44,7 @@ public class LikesActivity extends AppCompatActivity implements
     }
 
     private static final String TAG = "HomeActivity";
-    private static final int ACTIVITY_NUM = 0;
+    private static final int ACTIVITY_NUM = 3;
     private static final int HOME_FRAGMENT = 1;
     private static final int RESULT_ADD_NEW_STORY = 7891;
     private static final int REQUEST_ADD_NEW_STORY = 8719;

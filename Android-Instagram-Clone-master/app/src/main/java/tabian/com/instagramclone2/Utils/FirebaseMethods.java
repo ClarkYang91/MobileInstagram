@@ -247,50 +247,6 @@ public class FirebaseMethods {
     }
 
 
-    private void addNewStoryImageToDatabase(String url){
-        Log.d(TAG, "addNewStoryToDatabase: adding new story to database.");
-
-        Story story =  new Story();
-        story.setImage_url(url);
-        String newKey = myRef.push().getKey();
-        story.setStory_id(newKey);
-        story.setTimestamp(getTimestamp());
-        story.setUser_id(userID);
-        story.setViews("0");
-
-        myRef.child(mContext.getString(R.string.dbname_stories))
-                .child(userID)
-                .child(newKey)
-                .setValue(story);
-
-    }
-
-    private void addNewStoryVideoToDatabase(String url, byte[] bytes){
-        Log.d(TAG, "addNewStoryToDatabase: adding new story to database.");
-
-        Story story =  new Story();
-        story.setVideo_url(url);
-        String newKey = myRef.push().getKey();
-        story.setStory_id(newKey);
-        story.setTimestamp(getTimestamp());
-        story.setUser_id(userID);
-        story.setViews("0");
-
-        // calculate the estimated duration.
-        // need to do this for the progress bars in the block. We can't get the video duration of MP4 files
-        double megabytes = bytes.length / 1000000.000;
-        Log.d(TAG, "addNewStoryVideoToDatabase: estimated MB: " + megabytes);
-        String duration = String.valueOf(Math.round(15 * (megabytes / 6.3)));
-        Log.d(TAG, "addNewStoryVideoToDatabase: estimated video duration: " + duration);
-        story.setDuration(duration);
-
-        myRef.child(mContext.getString(R.string.dbname_stories))
-                .child(userID)
-                .child(newKey)
-                .setValue(story);
-
-    }
-
     private boolean isMediaVideo(String uri){
         if(uri.contains(".mp4") || uri.contains(".wmv") || uri.contains(".flv") || uri.contains(".avi")){
             return true;
