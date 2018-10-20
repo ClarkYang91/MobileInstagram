@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,7 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class ViewProfileFragment extends Fragment {
     private CircleImageView mProfilePhoto;
     private GridView gridView;
     private ImageView mBackArrow;
-    private BottomNavigationViewEx bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     private Context mContext;
     private TextView editProfile;
 
@@ -103,7 +104,7 @@ public class ViewProfileFragment extends Fragment {
         mFollowing = (TextView) view.findViewById(R.id.tvFollowing);
         mProgressBar = (ProgressBar) view.findViewById(R.id.profileProgressBar);
         gridView = (GridView) view.findViewById(R.id.gridView);
-        bottomNavigationView = (BottomNavigationViewEx) view.findViewById(R.id.bottomNavViewBar);
+        bottomNavigationView = (BottomNavigationView) view.findViewById(R.id.bottomNavViewBar);
         mFollow = (TextView) view.findViewById(R.id.follow);
         mUnfollow = (TextView) view.findViewById(R.id.unfollow);
         editProfile  = (TextView) view.findViewById(R.id.textEditProfile);

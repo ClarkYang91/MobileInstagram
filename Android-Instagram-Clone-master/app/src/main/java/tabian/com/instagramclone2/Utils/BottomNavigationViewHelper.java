@@ -8,7 +8,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import tabian.com.instagramclone2.Home.HomeActivity;
 import tabian.com.instagramclone2.Likes.LikesActivity;
@@ -23,15 +22,12 @@ public class BottomNavigationViewHelper {
 
     private static final String TAG = "BottomNavigationViewHel";
 
-    public static void setupBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx){
+    public static void setupBottomNavigationView(BottomNavigationView bottomNavigationView){
         Log.d(TAG, "setupBottomNavigationView: Setting up BottomNavigationView");
-        bottomNavigationViewEx.enableAnimation(false);
-        bottomNavigationViewEx.enableItemShiftingMode(false);
-        bottomNavigationViewEx.enableShiftingMode(false);
-        bottomNavigationViewEx.setTextVisibility(false);
+
     }
 
-    public static void enableNavigation(final Context context, final Activity callingActivity, BottomNavigationViewEx view){
+    public static void enableNavigation(final Context context, final Activity callingActivity, BottomNavigationView view){
         view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

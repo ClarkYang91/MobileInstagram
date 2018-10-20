@@ -39,7 +39,7 @@ dependencies {
     //recyclerview
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     //BottomNavigationViewEx library
-    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.1.9'
+
     //Circle ImageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     //elastic header

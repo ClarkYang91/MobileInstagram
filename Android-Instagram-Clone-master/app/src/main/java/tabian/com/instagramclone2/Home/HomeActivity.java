@@ -3,6 +3,7 @@ package tabian.com.instagramclone2.Home;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -18,7 +19,7 @@ import android.widget.RelativeLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import tabian.com.instagramclone2.Login.LoginActivity;
@@ -164,7 +165,7 @@ public class HomeActivity extends AppCompatActivity implements
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CameraFragment()); //index 0
         adapter.addFragment(new HomeFragment()); //index 1
-        adapter.addFragment(new MessagesFragment()); //index 2
+//        adapter.addFragment(new MessagesFragment()); //index 2
         mViewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -172,7 +173,7 @@ public class HomeActivity extends AppCompatActivity implements
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_instagram_black);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
     }
 
     /**
@@ -180,10 +181,10 @@ public class HomeActivity extends AppCompatActivity implements
      */
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, this,bottomNavigationViewEx);
-        Menu menu = bottomNavigationViewEx.getMenu();
+        BottomNavigationView BottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewHelper.setupBottomNavigationView(BottomNavigationView);
+        BottomNavigationViewHelper.enableNavigation(mContext, this,BottomNavigationView);
+        Menu menu = BottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
