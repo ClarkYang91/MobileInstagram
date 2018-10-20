@@ -74,13 +74,6 @@ public class RegisterActivity extends AppCompatActivity {
                 username = mUsername.getText().toString();
                 password = mPassword.getText().toString();
 
-//                if(checkInputs(email, username, password)){
-////                    mProgressBar.setVisibility(View.VISIBLE);
-////                    loadingPleaseWait.setVisibility(View.VISIBLE);
-//
-//                    firebaseMethods.registerNewEmail(email, password, username);
-//                }
-
                 if (email.equals("") || password.equals("") || username.equals(""))
                 {
                     Toast.makeText(RegisterActivity.this, "Please fill in necessary information", Toast.LENGTH_SHORT).show();
@@ -95,14 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-//    private boolean checkInputs(String email, String username, String password){
-//        Log.d(TAG, "checkInputs: checking inputs for null values.");
-//        if(email.equals("") || username.equals("") || password.equals("")){
-//            Toast.makeText(mContext, "All fields must be filled out.", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        return true;
-//    }
     /**
      * Initialize the activity widgets
      */
@@ -111,25 +96,10 @@ public class RegisterActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.input_email);
         mUsername = (EditText) findViewById(R.id.input_username);
         btnRegister = (Button) findViewById(R.id.btn_register);
-//        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-//        loadingPleaseWait = (TextView) findViewById(R.id.loadingPleaseWait);
         mPassword = (EditText) findViewById(R.id.input_password);
         mContext = RegisterActivity.this;
-//        mProgressBar.setVisibility(View.GONE);
-//        loadingPleaseWait.setVisibility(View.GONE);
 
     }
-
-//    private boolean isStringNull(String string){
-//        Log.d(TAG, "isStringNull: checking string if null.");
-//
-//        if(string.equals("")){
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }
 
      /*
     ------------------------------------ Firebase ---------------------------------------------
