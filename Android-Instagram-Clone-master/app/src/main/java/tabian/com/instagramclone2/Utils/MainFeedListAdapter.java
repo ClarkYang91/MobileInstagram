@@ -331,16 +331,16 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
                                     .removeValue();
 
 //                            mHolder.heart.toggleLike();
-                            if(mHolder.heartRed.getVisibility() == View.VISIBLE){
+                            if(mHolder.heart.heartRed.getVisibility() == View.VISIBLE){
 
-                                mHolder.heartRed.setVisibility(View.GONE);
-                                mHolder.heartWhite.setVisibility(View.VISIBLE);
+                                mHolder.heart.heartRed.setVisibility(View.GONE);
+                                mHolder.heart.heartWhite.setVisibility(View.VISIBLE);
                             }
 
-                            else if(mHolder.heartRed.getVisibility() == View.GONE){
+                            else if(mHolder.heart.heartRed.getVisibility() == View.GONE){
 
-                                mHolder.heartRed.setVisibility(View.VISIBLE);
-                                mHolder.heartWhite.setVisibility(View.GONE);
+                                mHolder.heart.heartRed.setVisibility(View.VISIBLE);
+                                mHolder.heart.heartWhite.setVisibility(View.GONE);
 
                             }
                             getLikesString(mHolder);
@@ -389,16 +389,16 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
                 .setValue(like);
 
 //        holder.heart.toggleLike();
-        if(holder.heartRed.getVisibility() == View.VISIBLE){
+        if(holder.heart.heartRed.getVisibility() == View.VISIBLE){
 
-            holder.heartRed.setVisibility(View.GONE);
-            holder.heartWhite.setVisibility(View.VISIBLE);
+            holder.heart.heartRed.setVisibility(View.GONE);
+            holder.heart.heartWhite.setVisibility(View.VISIBLE);
         }
 
-        else if(holder.heartRed.getVisibility() == View.GONE){
+        else if(holder.heart.heartRed.getVisibility() == View.GONE){
 
-            holder.heartRed.setVisibility(View.VISIBLE);
-            holder.heartWhite.setVisibility(View.GONE);
+            holder.heart.heartRed.setVisibility(View.VISIBLE);
+            holder.heart.heartWhite.setVisibility(View.GONE);
 
         }
 
