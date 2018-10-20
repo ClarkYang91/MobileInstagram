@@ -1,4 +1,4 @@
-package tabian.com.instagramclone2.Likes;
+package tabian.com.instagramclone2.Home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -161,7 +161,7 @@ public class LikesActivity extends AppCompatActivity implements
      */
     private void setupViewPager(){
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
+        adapter.addFragment(new CameraFragment()); //index 0
         adapter.addFragment(new HomeFragment()); //index 1
 //        adapter.addFragment(new MessagesFragment()); //index 2
         mViewPager.setAdapter(adapter);
@@ -169,8 +169,8 @@ public class LikesActivity extends AppCompatActivity implements
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
-
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_camera);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_instagram_black);
 //        tabLayout.getTabAt(2).setIcon(R.drawable.ic_arrow);
     }
 
@@ -196,14 +196,14 @@ public class LikesActivity extends AppCompatActivity implements
      * checks to see if the @param 'user' is logged in
      * @param user
      */
-    private void checkCurrentUser(FirebaseUser user){
-        Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
+     private void checkCurrentUser(FirebaseUser user){
+         Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
 
-        if(user == null){
-            Intent intent = new Intent(mContext, LoginActivity.class);
-            startActivity(intent);
-        }
-    }
+         if(user == null){
+             Intent intent = new Intent(mContext, LoginActivity.class);
+             startActivity(intent);
+         }
+     }
     /**
      * Setup the firebase auth object
      */
