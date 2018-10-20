@@ -348,7 +348,19 @@ public class ViewPostFragment extends Fragment {
                                     .child(keyID)
                                     .removeValue();
 
-                            mHeart.toggleLike();
+//                            mHeart.toggleLike();
+                            if(mHeart.heartRed.getVisibility() == View.VISIBLE){
+
+                                mHeart.heartRed.setVisibility(View.GONE);
+                                mHeart.heartWhite.setVisibility(View.VISIBLE);
+                            }
+
+                            else if(mHeart.heartRed.getVisibility() == View.GONE){
+
+                                mHeart.heartRed.setVisibility(View.VISIBLE);
+                                mHeart.heartWhite.setVisibility(View.GONE);
+
+                            }
                             getLikesString();
                         }
                         //case2: The user has not liked the photo
@@ -394,7 +406,19 @@ public class ViewPostFragment extends Fragment {
                 .child(newLikeID)
                 .setValue(like);
 
-        mHeart.toggleLike();
+//        mHeart.toggleLike();
+        if(mHeart.heartRed.getVisibility() == View.VISIBLE){
+
+            mHeart.heartRed.setVisibility(View.GONE);
+            mHeart.heartWhite.setVisibility(View.VISIBLE);
+        }
+
+        else if(mHeart.heartRed.getVisibility() == View.GONE){
+
+            mHeart.heartRed.setVisibility(View.VISIBLE);
+            mHeart.heartWhite.setVisibility(View.GONE);
+
+        }
         getLikesString();
     }
 

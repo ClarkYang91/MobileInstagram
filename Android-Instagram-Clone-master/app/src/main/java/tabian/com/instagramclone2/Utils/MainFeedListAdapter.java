@@ -330,7 +330,19 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
                                     .child(keyID)
                                     .removeValue();
 
-                            mHolder.heart.toggleLike();
+//                            mHolder.heart.toggleLike();
+                            if(mHolder.heart.heartRed.getVisibility() == View.VISIBLE){
+
+                                mHolder.heart.heartRed.setVisibility(View.GONE);
+                                mHolder.heart.heartWhite.setVisibility(View.VISIBLE);
+                            }
+
+                            else if(mHolder.heart.heartRed.getVisibility() == View.GONE){
+
+                                mHolder.heart.heartRed.setVisibility(View.VISIBLE);
+                                mHolder.heart.heartWhite.setVisibility(View.GONE);
+
+                            }
                             getLikesString(mHolder);
                         }
                         //case2: The user has not liked the photo
@@ -376,7 +388,20 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
                 .child(newLikeID)
                 .setValue(like);
 
-        holder.heart.toggleLike();
+//        holder.heart.toggleLike();
+        if(holder.heart.heartRed.getVisibility() == View.VISIBLE){
+
+            holder.heart.heartRed.setVisibility(View.GONE);
+            holder.heart.heartWhite.setVisibility(View.VISIBLE);
+        }
+
+        else if(holder.heart.heartRed.getVisibility() == View.GONE){
+
+            holder.heart.heartRed.setVisibility(View.VISIBLE);
+            holder.heart.heartWhite.setVisibility(View.GONE);
+
+        }
+
         getLikesString(holder);
     }
 
